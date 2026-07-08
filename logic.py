@@ -1,4 +1,4 @@
-from database import add_product, find_by_id
+from database import add_product, find_by_id, new_count, new_cost
 from models import Products
 
 def add_products():
@@ -16,3 +16,13 @@ def find_product():
     print('1. Изменить количество.')
     print('2. Изменить цену.')
     choice = int(input('Ваш выбор: '))
+    
+    if choice == 1:
+        new_product_count = int(input('Введите +/- количество товара: '))
+        product_count = new_count(product_id, new_product_count)
+        product_count.show_product()
+        
+    elif choice == 2:
+        new_product_cost = int(input('Введите +/- цену товара: '))
+        product_cost = new_cost(product_id, new_product_cost)
+        product_cost.show_product()

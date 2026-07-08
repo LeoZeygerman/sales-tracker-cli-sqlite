@@ -50,3 +50,37 @@ def find_by_id(product_id):
                 row['cost']
             )
     return product
+
+def new_count(product_id, delta):
+    with connect() as con:
+        con.row_factory = sq.Row
+        cur = con.cursor()
+        
+        cur.execute('''UPDATE products SET cost = cost + ? WHERE product_id = ?''',(delta, product_id))
+        cur.execute('''SELECT * FROM products WHERE product_id = ?''',(product_id,))
+        
+        for row in cur:
+            product = Products(
+                row['product_id'],
+                row['name'],
+                row['count'],
+                row['cost']
+            )
+    return product
+
+def new_cost(product_id, delta):
+    with connect() as con:
+        con.row_factory = sq.Row
+        cur = con.cursor()
+        
+        cur.execute('''UPDATE products SET count = count + ? WHERE product_id = ?''',(delta, product_id))
+        cur.execute('''SELECT * FROM products WHERE product_id = ?''',(product_id,))
+        
+        for row in cur:
+            product = Products(
+                row['product_id'],
+                row['name'],
+                row['count'],
+                row['cost']
+            )
+    return product
