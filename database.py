@@ -24,11 +24,29 @@ def add_product(name, count, cost):
         
         cur.execute('''INSERT INTO products(name, count, cost) VALUES(?, ?, ?)''',(name, count, cost))
         
+        product_id = cur.lastrowid
+        
         product = Products(
-            None,
+            product_id,
             name,
             count,
             cost
         )
         
+    return product
+
+def find_by_id(product_id):
+    with connect() as con:
+        con.row_factory = sq.Row
+        cur = con.cursor()
+        
+        cur.execute('''SELECT * FROM products WHERE product_id = ?''',(product_id,))
+        
+        for row in cur:
+            product = Products(
+                row['product_id'],
+                row['name'],
+                row['count'],
+                row['cost']
+            )
     return product

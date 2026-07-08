@@ -1,5 +1,5 @@
 from database import create_base
-from logic import add_products
+from logic import add_products, find_product
 
 while True:
     try:
@@ -9,11 +9,14 @@ while True:
         print('1. Добавить продукт.')
         print('2. Найти товар.')
         print('3. Список всех товаров.')
-        print('4. Выйти.')
+        print('4. Удалить товар.')
+        print('5. Выйти.')
         choice = int(input('Ваш выбор: '))
         
         if choice == 1:
             add_products()
+        elif choice == 2:
+            find_product()
         
     except ValueError:
         print('Ошибка при вводе!')

@@ -8,4 +8,4 @@ class Products:
         self.cost = cost
         
     def show_product(self):
-        print(f'=====\nПродукт: {self.name}\nЦена: {self.cost}\nКоличество: {self.count}\n=====')
+        print(f'=====\nНомер продутка: {self.product_id}\nПродукт: {self.name}\nЦена: {self.cost}\nКоличество: {self.count}\n=====')
