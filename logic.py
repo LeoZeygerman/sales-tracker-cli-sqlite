@@ -1,4 +1,4 @@
-from database import add_product, find_by_id, new_count, new_cost, show_all_data
+from database import add_product, find_by_id, new_count, new_cost, show_all_data, delete_product_data
 from models import Products
 
 def add_products():
@@ -38,3 +38,10 @@ def show_all():
     products = show_all_data()
     for product in products:
         product.show_product()
+        
+def delete_product():
+    product_id = int(input('Введите ID продукта,который хотите удалить: '))
+    delete_product_data(product_id)
+    show_all()
+    print('Продукт удален!')
+    

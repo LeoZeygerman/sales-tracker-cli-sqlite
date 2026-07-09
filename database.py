@@ -103,3 +103,10 @@ def show_all_data():
             products.append(product)
             
     return products
+
+def delete_product_data(product_id):
+    with connect() as con:
+        con.row_factory = sq.Row
+        cur = con.cursor()
+        
+        cur.execute('''DELETE FROM products WHERE product_id == ?''', (product_id,))
