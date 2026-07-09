@@ -1,5 +1,5 @@
 from database import create_base
-from logic import add_products, find_product
+from logic import add_products, find_product, show_all
 
 while True:
     try:
@@ -17,6 +17,8 @@ while True:
             add_products()
         elif choice == 2:
             find_product()
+        elif choice == 3:
+            show_all()
         
     except ValueError:
         print('Ошибка при вводе!')

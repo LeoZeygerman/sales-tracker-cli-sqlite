@@ -84,3 +84,22 @@ def new_cost(product_id, delta):
                 row['cost']
             )
     return product
+
+def show_all_data():
+    with connect() as con:
+        con.row_factory = sq.Row
+        cur = con.cursor()
+        
+        cur.execute('''SELECT * FROM products''')
+        
+        products = []
+        for row in cur:
+            product = Products(
+                row['product_id'],
+                row['name'],
+                row['count'],
+                row['cost']
+            )
+            products.append(product)
+            
+    return products
